@@ -1,0 +1,179 @@
+---
+import Base from "@/layouts/Base.astro";
+import TextToImageEditor from "@/layouts/helpers/TextToImageEditor";
+import PageHeader from "@/partials/PageHeader.astro";
+import { getCollection } from "astro:content";
+
+const tools = await getCollection("tools", ({ data }) => data.tool === "text-to-image");
+const guide = tools.find((t) => t.data.section === "guide");
+const useCases = tools.find((t) => t.data.section === "use-cases");
+const faq = tools.find((t) => t.data.section === "faq");
+---
+
+<Base
+  title="Text to Image Tool - Add Text to Photos Online"
+  meta_title="Text to Image Tool - Add Text Overlay to Photos Free"
+  description="Free online text to image tool. Add custom text, fonts, and overlays to your photos. Perfect for social media graphics, quotes, and more."
+>
+  <PageHeader title="Text to Image Tool" />
+  
+  <!-- Tool Interface Section -->
+  <section class="section-sm">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-12">
+          <TextToImageEditor client:load />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="section bg-light dark:bg-darkmode-light">
+    <div class="container">
+      <div class="row justify-center mb-12 text-center">
+        <div class="lg:col-8">
+          <h2 class="mb-4">Powerful Text Overlay Features</h2>
+          <p class="text-lg">Add beautiful text to your images with professional design tools</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="md:col-6 lg:col-4 mb-8">
+          <div class="rounded-lg border border-border p-6 dark:border-darkmode-border">
+            <div class="mb-4 text-4xl">🔤</div>
+            <h3 class="mb-3 text-xl">50+ Fonts</h3>
+            <p class="text-text dark:text-darkmode-text">Professional fonts including Display, Serif, Sans-serif, and Script options</p>
+          </div>
+        </div>
+
+        <div class="md:col-6 lg:col-4 mb-8">
+          <div class="rounded-lg border border-border p-6 dark:border-darkmode-border">
+            <div class="mb-4 text-4xl">🎨</div>
+            <h3 class="mb-3 text-xl">Custom Colors</h3>
+            <p class="text-text dark:text-darkmode-text">Full color picker with hex codes, RGB values, and transparency control</p>
+          </div>
+        </div>
+
+        <div class="md:col-6 lg:col-4 mb-8">
+          <div class="rounded-lg border border-border p-6 dark:border-darkmode-border">
+            <div class="mb-4 text-4xl">📍</div>
+            <h3 class="mb-3 text-xl">Easy Positioning</h3>
+            <p class="text-text dark:text-darkmode-text">Drag, drop, and manually position text exactly where you want it</p>
+          </div>
+        </div>
+
+        <div class="md:col-6 lg:col-4 mb-8">
+          <div class="rounded-lg border border-border p-6 dark:border-darkmode-border">
+            <div class="mb-4 text-4xl">✨</div>
+            <h3 class="mb-3 text-xl">Text Effects</h3>
+            <p class="text-text dark:text-darkmode-text">Shadow, outline, glow, and rotation effects for stunning visuals</p>
+          </div>
+        </div>
+
+        <div class="md:col-6 lg:col-4 mb-8">
+          <div class="rounded-lg border border-border p-6 dark:border-darkmode-border">
+            <div class="mb-4 text-4xl">🖼️</div>
+            <h3 class="mb-3 text-xl">Live Preview</h3>
+            <p class="text-text dark:text-darkmode-text">See changes in real-time as you design your text overlay</p>
+          </div>
+        </div>
+
+        <div class="md:col-6 lg:col-4 mb-8">
+          <div class="rounded-lg border border-border p-6 dark:border-darkmode-border">
+            <div class="mb-4 text-4xl">⬇️</div>
+            <h3 class="mb-3 text-xl">Quick Download</h3>
+            <p class="text-text dark:text-darkmode-text">Export as PNG, JPG, or WebP with one click</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Links to Resources -->
+  <section class="section">
+    <div class="container">
+      <div class="row justify-center gap-4">
+        <div class="lg:col-4">
+          <a href="#guide" class="block rounded-lg border border-border p-6 text-center transition hover:border-primary dark:border-darkmode-border hover:dark:border-darkmode-primary">
+            <h3 class="mb-2">📖 How to Use</h3>
+            <p class="text-sm text-text dark:text-darkmode-text">Step-by-step guide to adding text</p>
+          </a>
+        </div>
+        <div class="lg:col-4">
+          <a href="#use-cases" class="block rounded-lg border border-border p-6 text-center transition hover:border-primary dark:border-darkmode-border hover:dark:border-darkmode-primary">
+            <h3 class="mb-2">💡 Use Cases</h3>
+            <p class="text-sm text-text dark:text-darkmode-text">Creative applications and inspiration</p>
+          </a>
+        </div>
+        <div class="lg:col-4">
+          <a href="#faq" class="block rounded-lg border border-border p-6 text-center transition hover:border-primary dark:border-darkmode-border hover:dark:border-darkmode-primary">
+            <h3 class="mb-2">❓ FAQ</h3>
+            <p class="text-sm text-text dark:text-darkmode-text">Common questions and troubleshooting</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Guide Section -->
+  {guide && (
+    <section class="section bg-light dark:bg-darkmode-light" id="guide">
+      <div class="container">
+        <div class="row justify-center">
+          <div class="lg:col-10">
+            <h2 class="mb-8 text-center">{guide.data.title}</h2>
+            <div class="prose dark:prose-invert max-w-none">
+              {/* Guide content would be rendered here */}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Use Cases Section -->
+  {useCases && (
+    <section class="section" id="use-cases">
+      <div class="container">
+        <div class="row justify-center">
+          <div class="lg:col-10">
+            <h2 class="mb-8 text-center">{useCases.data.title}</h2>
+            <div class="prose dark:prose-invert max-w-none">
+              {/* Use cases content would be rendered here */}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- FAQ Section -->
+  {faq && (
+    <section class="section bg-light dark:bg-darkmode-light" id="faq">
+      <div class="container">
+        <div class="row justify-center">
+          <div class="lg:col-10">
+            <h2 class="mb-8 text-center">{faq.data.title}</h2>
+            <div class="prose dark:prose-invert max-w-none">
+              {/* FAQ content would be rendered here */}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- CTA Section -->
+  <section class="section bg-gradient">
+    <div class="container">
+      <div class="row justify-center text-center">
+        <div class="lg:col-8">
+          <h2 class="mb-6">Create Stunning Graphics Today</h2>
+          <p class="mb-8 text-lg">Add impactful text to your images and stand out on social media</p>
+          <a href="#" class="btn btn-primary">Start Creating Now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

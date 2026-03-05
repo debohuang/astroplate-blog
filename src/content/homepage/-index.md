@@ -1,51 +1,56 @@
 ---
 # Banner
 banner:
-  title: "The Ultimate Starter Template You Need To Start Your Astro Project"
-  content: "Astroplate is a free starter template built with Astro and TailwindCSS, providing everything you need to jumpstart your Astro project and save valuable time."
-  image: "/images/banner.png"
+  title: "Free Online Image Merge & Text to Image Tools"
+  content: "Combine multiple images into one. Add stunning text overlays to your photos. Professional quality results in seconds. No registration required."
+  image: "/images/tools/hero-banner.png"
   button:
     enable: true
-    label: "Fork Deploy and Edit Online 🚀"
-    link: "https://app.sitepins.com/new/clone?name=Astroplate&repository=https://github.com/zeon-studio/astroplate/"
+    label: "Start Using Free Tools 🎨"
+    link: "/tools/image-merge"
 
 # Features
 features:
-  - title: "What's Included in Astroplate"
-    image: "/images/service-1.png"
-    content: "Astroplate is a comprehensive starter template that includes everything you need to get started with your Astro project. What's Included in Astroplate"
+  - title: "Image Merge Tool"
+    image: "/images/tools/image-merge-feature.png"
+    content: "Combine multiple images into one perfect graphic. Choose from multiple merge formats including horizontal, vertical, grid layouts, and more."
     bulletpoints:
-      - "10+ Pre-build pages"
-      - "95+ Google Pagespeed Score"
-      - "Build with Astro and TailwindCSS for easy and customizable styling"
-      - "Fully responsive on all devices"
-      - "SEO-optimized for better search engine rankings"
-      - "**Open-source and free** for personal and commercial use"
-    button:
-      enable: false
-      label: "Get Started Now"
-      link: "#"
-
-  - title: "Discover the Key Features Of Astro"
-    image: "/images/service-2.png"
-    content: "Astro is an all-in-one web framework for building fast, content-focused websites. It offers a range of exciting features for developers and website creators. Some of the key features are:"
-    bulletpoints:
-      - "Zero JS, by default: No JavaScript runtime overhead to slow you down."
-      - "Customizable: Tailwind, MDX, and 100+ other integrations to choose from."
-      - "UI-agnostic: Supports React, Preact, Svelte, Vue, Solid, Lit and more."
+      - "Horizontal, Vertical, Grid (2x2, 3x3), and Long Image formats"
+      - "Adjustable spacing between images (0-50px)"
+      - "Support for JPG, PNG, WebP, GIF formats"
+      - "High-quality output maintaining original resolution"
+      - "Real-time preview before download"
+      - "Instant processing with no file size limits"
     button:
       enable: true
-      label: "Get Started Now"
-      link: "https://github.com/zeon-studio/astroplate"
+      label: "Try Image Merge Now"
+      link: "/tools/image-merge"
 
-  - title: "The Top Reasons to Choose Astro for Your Next Project"
-    image: "/images/service-3.png"
-    content: "With Astro, you can build modern and content-focused websites without sacrificing performance or ease of use."
+  - title: "Text to Image Tool"
+    image: "/images/tools/text-to-image-feature.png"
+    content: "Add professional text overlays to your photos with stunning design features. Create social media graphics, quotes, and promotional images."
     bulletpoints:
-      - "Instantly load static sites for better user experience and SEO."
-      - "Intuitive syntax and support for popular frameworks make learning and using Astro a breeze."
-      - "Use any front-end library or framework, or build custom components, for any project size."
-      - "Built on cutting-edge technology to keep your projects up-to-date with the latest web standards."
+      - "50+ professional fonts to choose from"
+      - "Custom colors with full color picker control"
+      - "Multiple text positioning options"
+      - "Text effects: shadow, outline, glow, rotation"
+      - "Drag-and-drop canvas for easy positioning"
+      - "Export as PNG, JPG, or WebP"
+    button:
+      enable: true
+      label: "Try Text to Image Now"
+      link: "/tools/text-to-image"
+
+  - title: "Why Choose Image Merge Tools?"
+    image: "/images/tools/why-choose.png"
+    content: "The most convenient and feature-rich image tools available online. Trusted by thousands of creators, marketers, and photographers worldwide."
+    bulletpoints:
+      - "100% Free Forever - No hidden costs or premium versions"
+      - "No Registration Required - Start instantly"
+      - "Privacy First - No data storage or sharing"
+      - "Fast & Reliable - Process images in seconds"
+      - "No Watermarks - Clean professional outputs"
+      - "6 Languages Supported - English, Spanish, Chinese, French, German, Japanese"
     button:
       enable: false
       label: ""
