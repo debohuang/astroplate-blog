@@ -1,12 +1,19 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import { useLanguage } from '@/lib/useLanguage';
 
 export default function ImageMergeEditor() {
+  const [mounted, setMounted] = useState(false);
+  const { translate } = useLanguage();
   const [images, setImages] = useState<string[]>([]);
   const [mergeFormat, setMergeFormat] = useState<string>('horizontal');
   const [spacing, setSpacing] = useState<number>(0);
   const [preview, setPreview] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
@@ -48,7 +55,7 @@ export default function ImageMergeEditor() {
 
   const mergeImages = async () => {
     if (images.length < 2) {
-      alert('Please select at least 2 images');
+      alert(translate('tools.imageMerge.selectAtLeast2'));
       return;
     }
 
@@ -77,7 +84,7 @@ export default function ImageMergeEditor() {
       setPreview(canvas.toDataURL('image/png'));
     } catch (error) {
       console.error('Error merging images:', error);
-      alert('Error merging images');
+      alert(translate('tools.imageMerge.errorMerging'));
     } finally {
       setLoading(false);
     }
@@ -122,7 +129,7 @@ export default function ImageMergeEditor() {
         {/* Upload Section */}
         <div className="lg:col-span-1">
           <div className="bg-light dark:bg-darkmode-light rounded-lg p-6 space-y-4">
-            <h3 className="text-lg font-semibold">Upload Images</h3>
+            <h3 className="text-lg font-semibold">{translate('tools.imageMerge.upload')}</h3>
             
             <div
               onDragOver={handleDragOver}
@@ -133,10 +140,10 @@ export default function ImageMergeEditor() {
             >
               <div className="text-4xl mb-2">📁</div>
               <p className="text-sm text-text dark:text-darkmode-text">
-                Drag and drop images or click to browse
+                {translate('tools.imageMerge.dragDropHint')}
               </p>
               <p className="text-xs text-text/60 dark:text-darkmode-text/60 mt-1">
-                Supported: JPG, PNG, WebP, GIF (Max 10MB each)
+                {translate('tools.imageMerge.supportedFormats')}
               </p>
             </div>
 
@@ -152,7 +159,7 @@ export default function ImageMergeEditor() {
             {/* Image List */}
             {images.length > 0 && (
               <div className="space-y-2">
-                <label className="text-sm font-medium">Uploaded Images ({images.length})</label>
+                <label className="text-sm font-medium">{translate('tools.imageMerge.uploadedImages')} ({images.length})</label>
                 <div className="space-y-1 max-h-40 overflow-y-auto">
                   {images.map((_, idx) => (
                     <div key={idx} className="flex items-center justify-between bg-white dark:bg-darkmode-bg p-2 rounded text-sm">
@@ -174,26 +181,26 @@ export default function ImageMergeEditor() {
         {/* Settings Section */}
         <div className="lg:col-span-1">
           <div className="bg-light dark:bg-darkmode-light rounded-lg p-6 space-y-4">
-            <h3 className="text-lg font-semibold">Settings</h3>
+            <h3 className="text-lg font-semibold">{translate('tools.imageMerge.settings')}</h3>
 
             <div>
-              <label className="block text-sm font-medium mb-2">Merge Format</label>
+              <label className="block text-sm font-medium mb-2">{translate('tools.imageMerge.mergeFormat')}</label>
               <select
                 value={mergeFormat}
                 onChange={(e) => setMergeFormat(e.target.value)}
                 className="w-full px-3 py-2 border border-border dark:border-darkmode-border rounded bg-white dark:bg-darkmode-bg text-text dark:text-darkmode-text"
               >
-                <option value="horizontal">Horizontal</option>
-                <option value="vertical">Vertical</option>
-                <option value="grid-2x2">Grid 2×2</option>
-                <option value="grid-3x3">Grid 3×3</option>
-                <option value="long-image">Long Image</option>
+                <option value="horizontal">{translate('tools.imageMerge.horizontal')}</option>
+                <option value="vertical">{translate('tools.imageMerge.vertical')}</option>
+                <option value="grid-2x2">{translate('tools.imageMerge.grid2x2')}</option>
+                <option value="grid-3x3">{translate('tools.imageMerge.grid3x3')}</option>
+                <option value="long-image">{translate('tools.imageMerge.longImage')}</option>
               </select>
             </div>
 
             <div>
               <label className="block text-sm font-medium mb-2">
-                Image Spacing: {spacing}px
+                {translate('tools.imageMerge.imageSpacing')}: {spacing}px
               </label>
               <input
                 type="range"
@@ -204,8 +211,8 @@ export default function ImageMergeEditor() {
                 className="w-full"
               />
               <div className="flex justify-between text-xs text-text/60 dark:text-darkmode-text/60 mt-1">
-                <span>No Gap</span>
-                <span>Large Gap</span>
+                <span>{translate('tools.imageMerge.noGap')}</span>
+                <span>{translate('tools.imageMerge.largeGap')}</span>
               </div>
             </div>
 
@@ -214,7 +221,7 @@ export default function ImageMergeEditor() {
               disabled={loading || images.length < 2}
               className="w-full btn btn-primary disabled:opacity-50"
             >
-              {loading ? 'Processing...' : 'Merge Images'}
+              {loading ? translate('tools.imageMerge.processing') : translate('tools.imageMerge.merge')}
             </button>
           </div>
         </div>
@@ -222,7 +229,7 @@ export default function ImageMergeEditor() {
         {/* Preview Section */}
         <div className="lg:col-span-1">
           <div className="bg-light dark:bg-darkmode-light rounded-lg p-6 space-y-4">
-            <h3 className="text-lg font-semibold">Preview</h3>
+            <h3 className="text-lg font-semibold">{translate('tools.imageMerge.preview')}</h3>
 
             {preview ? (
               <div className="space-y-3">
@@ -235,12 +242,12 @@ export default function ImageMergeEditor() {
                   onClick={downloadImage}
                   className="w-full btn btn-primary"
                 >
-                  ⬇️ Download Image
+                  ⬇️ {translate('tools.imageMerge.downloadImage')}
                 </button>
               </div>
             ) : (
               <div className="w-full h-48 bg-white dark:bg-darkmode-bg rounded border border-dashed border-border dark:border-darkmode-border flex items-center justify-center text-text/50 dark:text-darkmode-text/50">
-                Preview will appear here
+                {translate('tools.imageMerge.preview')} will appear here
               </div>
             )}
           </div>

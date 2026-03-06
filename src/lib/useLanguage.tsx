@@ -15,20 +15,29 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     // Load language from localStorage or browser preference
-    const stored = localStorage.getItem('language') as Language;
-    if (stored && stored in translations) {
-      setLanguageState(stored);
-    } else {
-      const browserLang = navigator.language.split('-')[0].toLowerCase() as Language;
-      const lang = browserLang in translations ? browserLang : 'en';
-      setLanguageState(lang);
+    try {
+      const stored = localStorage.getItem('language') as Language;
+      if (stored && stored in translations) {
+        setLanguageState(stored);
+      } else {
+        const browserLang = navigator.language?.split('-')[0]?.toLowerCase() as Language;
+        const lang = (browserLang && browserLang in translations) ? browserLang : 'en';
+        setLanguageState(lang);
+      }
+    } catch (error) {
+      // localStorage might not be available, use default
+      setLanguageState('en');
     }
     setMounted(true);
   }, []);
 
   const setLanguage = (lang: Language) => {
     setLanguageState(lang);
-    localStorage.setItem('language', lang);
+    try {
+      localStorage.setItem('language', lang);
+    } catch (error) {
+      // localStorage might not be available, ignore
+    }
   };
 
   const translate = (key: string): string => {

@@ -1,6 +1,6 @@
 ---
 import Base from "@/layouts/Base.astro";
-import TextToImageEditor from "@/layouts/helpers/TextToImageEditor";
+import TextToImageEditorWrapper from "@/layouts/helpers/TextToImageEditorWrapper";
 import PageHeader from "@/partials/PageHeader.astro";
 import { getCollection } from "astro:content";
 
@@ -15,14 +15,14 @@ const faq = tools.find((t) => t.data.section === "faq");
   meta_title="Text to Image Tool - Add Text Overlay to Photos Free"
   description="Free online text to image tool. Add custom text, fonts, and overlays to your photos. Perfect for social media graphics, quotes, and more."
 >
-  <PageHeader title="Text to Image Tool" />
+  <!-- <PageHeader title="Text to Image Tool" /> -->
   
   <!-- Tool Interface Section -->
   <section class="section-sm">
     <div class="container">
       <div class="row justify-center">
         <div class="lg:col-12">
-          <TextToImageEditor client:load />
+          <TextToImageEditorWrapper client:load />
         </div>
       </div>
     </div>

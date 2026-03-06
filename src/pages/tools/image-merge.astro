@@ -1,6 +1,6 @@
 ---
 import Base from "@/layouts/Base.astro";
-import ImageMergeEditor from "@/layouts/helpers/ImageMergeEditor";
+import ImageMergeEditorWrapper from "@/layouts/helpers/ImageMergeEditorWrapper";
 import PageHeader from "@/partials/PageHeader.astro";
 import { getCollection } from "astro:content";
 
@@ -15,14 +15,14 @@ const faq = tools.find((t) => t.data.section === "faq");
   meta_title="Image Merge Tool - Merge Images Horizontally, Vertically & Grid"
   description="Free online image merge tool. Combine images horizontally, vertically, in grids, and more. No registration required, instant processing."
 >
-  <PageHeader title="Image Merge Tool" />
+  <!-- <PageHeader title="Image Merge Tool" /> -->
   
   <!-- Tool Interface Section -->
   <section class="section-sm">
     <div class="container">
       <div class="row justify-center">
         <div class="lg:col-12">
-          <ImageMergeEditor client:load />
+          <ImageMergeEditorWrapper client:load />
         </div>
       </div>
     </div>
