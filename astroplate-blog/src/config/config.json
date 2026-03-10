@@ -1,0 +1,59 @@
+{
+  "site": {
+    "title": "Image Merge Tools - Combine & Merge Images Online",
+    "base_url": "https://image-merge-tools.com",
+    "base_path": "/",
+    "trailing_slash": false,
+    "favicon": "/images/favicon.png",
+    "logo": "/images/logo.png",
+    "logo_darkmode": "/images/logo-darkmode.png",
+    "logo_width": "150",
+    "logo_height": "30",
+    "logo_text": "ImageMerge"
+  },
+
+  "settings": {
+    "search": true,
+    "sticky_header": true,
+    "theme_switcher": true,
+    "language_switcher": true,
+    "default_theme": "system",
+    "default_language": "en",
+    "pagination": 10,
+    "summary_length": 200
+  },
+
+  "announcement": {
+    "enable": true,
+    "content": "<span class='text-center block'>🎨 Free Online Image Merge Tool - Merge images, add text to images, and more!</span>",
+    "expire_days": 0
+  },
+
+  "params": {
+    "contact_form_action": "#",
+    "copyright": "© 2024 Image Merge Tools. All Rights Reserved."
+  },
+
+  "navigation_button": {
+    "enable": false,
+    "label": "Get Started",
+    "link": "#"
+  },
+
+  "google_tag_manager": {
+    "enable": false,
+    "gtm_id": "GTM-XXXXXX"
+  },
+
+  "disqus": {
+    "enable": false,
+    "shortname": "",
+    "settings": {}
+  },
+
+  "metadata": {
+    "meta_author": "ImageMerge Tools",
+    "meta_image": "/images/og-image.png",
+    "meta_description": "Free online image merge tools. Combine images horizontally, vertically, in grids. Add text to images with custom fonts and positions."
+  }
+}

@@ -1,0 +1,179 @@
+---
+import Base from "@/layouts/Base.astro";
+import ImageMergeEditorWrapper from "@/layouts/helpers/ImageMergeEditorWrapper";
+import PageHeader from "@/partials/PageHeader.astro";
+import { getCollection } from "astro:content";
+
+const tools = await getCollection("tools", ({ data }) => data.tool === "image-merge");
+const guide = tools.find((t) => t.data.section === "guide");
+const useCases = tools.find((t) => t.data.section === "use-cases");
+const faq = tools.find((t) => t.data.section === "faq");
+---
+
+<Base
+  title="Image Merge Tool - Combine Multiple Images Online"
+  meta_title="Image Merge Tool - Merge Images Horizontally, Vertically & Grid"
+  description="Free online image merge tool. Combine images horizontally, vertically, in grids, and more. No registration required, instant processing."
+>
+  <!-- <PageHeader title="Image Merge Tool" /> -->
+  
+  <!-- Tool Interface Section -->
+  <section class="section-sm">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="lg:col-12">
+          <ImageMergeEditorWrapper client:load />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="section bg-light dark:bg-darkmode-light">
+    <div class="container">
+      <div class="row justify-center mb-12 text-center">
+        <div class="lg:col-8">
+          <h2 class="mb-4">Why Choose Our Image Merge Tool?</h2>
+          <p class="text-lg">Fast, free, and powerful image merging with multiple format options</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="md:col-6 lg:col-4 mb-8">
+          <div class="rounded-lg border border-border p-6 dark:border-darkmode-border">
+            <div class="mb-4 text-4xl">🎨</div>
+            <h3 class="mb-3 text-xl">Multiple Formats</h3>
+            <p class="text-text dark:text-darkmode-text">Horizontal, Vertical, Grid (2x2, 3x3), Long Image, and more merging options</p>
+          </div>
+        </div>
+
+        <div class="md:col-6 lg:col-4 mb-8">
+          <div class="rounded-lg border border-border p-6 dark:border-darkmode-border">
+            <div class="mb-4 text-4xl">⚡</div>
+            <h3 class="mb-3 text-xl">Fast Processing</h3>
+            <p class="text-text dark:text-darkmode-text">Instant image merging with real-time preview. No lengthy processing times</p>
+          </div>
+        </div>
+
+        <div class="md:col-6 lg:col-4 mb-8">
+          <div class="rounded-lg border border-border p-6 dark:border-darkmode-border">
+            <div class="mb-4 text-4xl">🎚️</div>
+            <h3 class="mb-3 text-xl">Adjustable Spacing</h3>
+            <p class="text-text dark:text-darkmode-text">Control gap between images from no gap to 50px for perfect alignment</p>
+          </div>
+        </div>
+
+        <div class="md:col-6 lg:col-4 mb-8">
+          <div class="rounded-lg border border-border p-6 dark:border-darkmode-border">
+            <div class="mb-4 text-4xl">✨</div>
+            <h3 class="mb-3 text-xl">High Quality Output</h3>
+            <p class="text-text dark:text-darkmode-text">Export as PNG, JPG, or WebP with original resolution maintained</p>
+          </div>
+        </div>
+
+        <div class="md:col-6 lg:col-4 mb-8">
+          <div class="rounded-lg border border-border p-6 dark:border-darkmode-border">
+            <div class="mb-4 text-4xl">🔒</div>
+            <h3 class="mb-3 text-xl">100% Private</h3>
+            <p class="text-text dark:text-darkmode-text">Your images are never stored or shared. All processing is secure and confidential</p>
+          </div>
+        </div>
+
+        <div class="md:col-6 lg:col-4 mb-8">
+          <div class="rounded-lg border border-border p-6 dark:border-darkmode-border">
+            <div class="mb-4 text-4xl">🆓</div>
+            <h3 class="mb-3 text-xl">Completely Free</h3>
+            <p class="text-text dark:text-darkmode-text">No registration, no watermarks, no premium version. Just free forever</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Links to Resources -->
+  <section class="section">
+    <div class="container">
+      <div class="row justify-center gap-4">
+        <div class="lg:col-4">
+          <a href="#guide" class="block rounded-lg border border-border p-6 text-center transition hover:border-primary dark:border-darkmode-border hover:dark:border-darkmode-primary">
+            <h3 class="mb-2">📖 How to Use</h3>
+            <p class="text-sm text-text dark:text-darkmode-text">Step-by-step guide to merging images</p>
+          </a>
+        </div>
+        <div class="lg:col-4">
+          <a href="#use-cases" class="block rounded-lg border border-border p-6 text-center transition hover:border-primary dark:border-darkmode-border hover:dark:border-darkmode-primary">
+            <h3 class="mb-2">💡 Use Cases</h3>
+            <p class="text-sm text-text dark:text-darkmode-text">Real-world applications and examples</p>
+          </a>
+        </div>
+        <div class="lg:col-4">
+          <a href="#faq" class="block rounded-lg border border-border p-6 text-center transition hover:border-primary dark:border-darkmode-border hover:dark:border-darkmode-primary">
+            <h3 class="mb-2">❓ FAQ</h3>
+            <p class="text-sm text-text dark:text-darkmode-text">Common questions and troubleshooting</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Guide Section -->
+  {guide && (
+    <section class="section bg-light dark:bg-darkmode-light" id="guide">
+      <div class="container">
+        <div class="row justify-center">
+          <div class="lg:col-10">
+            <h2 class="mb-8 text-center">{guide.data.title}</h2>
+            <div class="prose dark:prose-invert max-w-none">
+              {/* Guide content would be rendered here */}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Use Cases Section -->
+  {useCases && (
+    <section class="section" id="use-cases">
+      <div class="container">
+        <div class="row justify-center">
+          <div class="lg:col-10">
+            <h2 class="mb-8 text-center">{useCases.data.title}</h2>
+            <div class="prose dark:prose-invert max-w-none">
+              {/* Use cases content would be rendered here */}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- FAQ Section -->
+  {faq && (
+    <section class="section bg-light dark:bg-darkmode-light" id="faq">
+      <div class="container">
+        <div class="row justify-center">
+          <div class="lg:col-10">
+            <h2 class="mb-8 text-center">{faq.data.title}</h2>
+            <div class="prose dark:prose-invert max-w-none">
+              {/* FAQ content would be rendered here */}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- CTA Section -->
+  <section class="section bg-gradient">
+    <div class="container">
+      <div class="row justify-center text-center">
+        <div class="lg:col-8">
+          <h2 class="mb-6">Ready to Merge Your Images?</h2>
+          <p class="mb-8 text-lg">Join thousands of creators, marketers, and photographers using Image Merge Tools daily</p>
+          <a href="#" class="btn btn-primary">Start Merging Now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>
