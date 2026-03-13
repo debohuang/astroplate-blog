@@ -1,5 +1,6 @@
 ---
 title: William Jacob
+draft: false
 email: williamjacob@email.com
 image: "/images/avatar.png"
 description: this is meta description

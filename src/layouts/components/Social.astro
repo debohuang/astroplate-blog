@@ -9,20 +9,22 @@ export interface ISocial {
 }
 ---
 
-<ul class={className}>
-  {
-    source.map((social: ISocial) => (
-      <li>
-        <a
-          aria-label={social.name}
-          href={social.link}
-          target="_blank"
-          rel="noopener noreferrer nofollow"
-        >
-          <span class="sr-only">{social.name}</span>
-          <DynamicIcon className="inline-block" icon={social.icon} />
-        </a>
-      </li>
-    ))
-  }
-</ul>
+{source && Array.isArray(source) && source.length > 0 && (
+  <ul class={className}>
+    {
+      source.map((social: ISocial) => (
+        <li>
+          <a
+            aria-label={social.name}
+            href={social.link}
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+          >
+            <span class="sr-only">{social.name}</span>
+            <DynamicIcon className="inline-block" icon={social.icon} />
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+)}

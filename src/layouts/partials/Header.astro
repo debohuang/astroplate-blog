@@ -1,9 +1,9 @@
 ---
 import Logo from "@/components/Logo.astro";
 import ThemeSwitcher from "@/components/ThemeSwitcher.astro";
+import LanguageSwitcher from "@/layouts/components/LanguageSwitcher.astro";
 import config from "@/config/config.json";
 import menu from "@/config/menu.json";
-import { IoSearch } from "react-icons/io5";
 
 export interface ChildNavigationLink {
   name: string;
@@ -127,18 +127,8 @@ const { pathname } = Astro.url;
         )
       }
     </ul>
-    <div class="order-1 ml-auto flex items-center md:order-2 lg:ml-0">
-      {
-        settings.search && (
-          <button
-            class="border-border text-text-dark hover:text-primary dark:border-darkmode-border mr-5 inline-block border-r pr-5 text-xl dark:text-white dark:hover:text-darkmode-primary"
-            aria-label="search"
-            data-search-trigger
-          >
-            <IoSearch />
-          </button>
-        )
-      }
+    <div class="order-1 ml-auto flex items-center gap-4 md:order-2 lg:ml-0">
+      <LanguageSwitcher />
       <ThemeSwitcher className="mr-5" />
       {
         navigation_button.enable && (

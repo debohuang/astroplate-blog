@@ -70,7 +70,19 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
 export function useLanguage() {
   const context = useContext(LanguageContext);
   if (!context) {
-    throw new Error('useLanguage must be used within LanguageProvider');
+    // Return a safe default for server-side rendering or when provider is not available
+    return {
+      language: 'en' as Language,
+      setLanguage: () => {},
+      translate: (key: string) => {
+        const keys = key.split('.');
+        let value: any = translations.en;
+        for (const k of keys) {
+          value = value?.[k];
+        }
+        return value || key;
+      },
+    };
   }
   return context;
 }

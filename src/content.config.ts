@@ -67,10 +67,63 @@ const aboutCollection = defineCollection({
   }),
 });
 
+// Authors collection schema
+const authorsCollection = defineCollection({
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "src/content/authors" }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    meta_title: z.string().optional(),
+    image: z.string().optional(),
+    draft: z.boolean(),
+    email: z.string().optional(),
+    social: z
+      .array(
+        z.object({
+          name: z.string(),
+          icon: z.string(),
+          link: z.string(),
+        })
+      )
+      .optional(),
+  }),
+});
+
+// Blog collection schema
+const blogCollection = defineCollection({
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "src/content/blog" }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    meta_title: z.string().optional(),
+    date: z.coerce.date().optional(),
+    image: z.string().optional(),
+    draft: z.boolean(),
+    categories: z.array(z.string()).optional(),
+    tags: z.array(z.string()).optional(),
+    author: z.string().optional(),
+  }),
+});
+
+// Contact collection schema
+const contactCollection = defineCollection({
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "src/content/contact" }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    meta_title: z.string().optional(),
+    image: z.string().optional(),
+    draft: z.boolean(),
+  }),
+});
+
 // Export collections
 export const collections = {
   homepage: homepageCollection,
   pages: pagesCollection,
   about: aboutCollection,
+  authors: authorsCollection,
+  blog: blogCollection,
+  contact: contactCollection,
   tools: toolDocsCollection,
 };
